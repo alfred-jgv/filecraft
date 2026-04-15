@@ -1,0 +1,302 @@
+.mergeLayout {
+    margin-top: 24px;
+}
+
+.dropzone {
+    border: 3px dashed #c8c0b4;
+    border-radius: 8px;
+    background: #fffdf7;
+    padding: 60px 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropzone:hover {
+    border-color: #0f6e56;
+    background: #f0f6f2;
+}
+
+.dropzone.dragging {
+    border-color: #0f6e56;
+    background: #e8f4ee;
+    transform: scale(0.98);
+}
+
+.dropzoneContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f4ee;
+    border-radius: 50%;
+    color: #0f6e56;
+}
+
+.dropzoneTitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c2c2a;
+    margin: 0;
+}
+
+.dropzoneText {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    color: #888780;
+    margin: 0;
+}
+
+.browseLink {
+    color: #0f6e56;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fileHint {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    color: #c8c0b4;
+    margin: 8px 0 0;
+}
+
+.mergeContainer {
+    background: #fffdf7;
+    border: 2px solid #e8e0d0;
+    border-radius: 6px;
+    padding: 24px;
+}
+
+.mergeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e8e0d0;
+}
+
+.mergeTitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c2c2a;
+    margin: 0;
+}
+
+.mergeActions {
+    display: flex;
+    gap: 12px;
+}
+
+.clearButton {
+    padding: 6px 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    background: #f0ece0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.clearButton:hover {
+    background: #e8e0d0;
+}
+
+.addMoreButton {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    background: #f0ece0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+}
+
+.addMoreButton:hover {
+    background: #e8e0d0;
+}
+
+.fileOrderList {
+    margin: 20px 0;
+}
+
+.orderHint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    color: #888780;
+    margin-bottom: 12px;
+}
+
+.orderItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #faf8f0;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    cursor: move;
+    transition: all 0.15s ease;
+}
+
+.orderItem.dragging {
+    opacity: 0.5;
+    background: #e8f4ee;
+}
+
+.dragHandle {
+    color: #c8c0b4;
+    cursor: grab;
+}
+
+.orderNumber {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f4ee;
+    border-radius: 4px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0f6e56;
+}
+
+.orderItemInfo {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orderItemName {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    color: #2c2c2a;
+}
+
+.orderItemSize {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    color: #888780;
+}
+
+.removeOrderBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: #888780;
+}
+
+.removeOrderBtn:hover {
+    background: #f0a0a0;
+    color: #633806;
+}
+
+.previewInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+    padding: 16px;
+    background: #e8f4ee;
+    border-radius: 6px;
+}
+
+.previewInfo p {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    color: #0f6e56;
+    font-style: italic;
+    margin: 0;
+}
+
+.mergeFooter {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.mergeButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    background: #0f6e56;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.mergeButton:hover:not(:disabled) {
+    background: #0a5a46;
+    transform: translateY(-1px);
+}
+
+.mergeButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.spinning {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .dropzone {
+        padding: 40px 20px;
+    }
+    
+    .mergeHeader {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .orderItemInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
