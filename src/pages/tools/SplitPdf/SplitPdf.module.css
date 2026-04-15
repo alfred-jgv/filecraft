@@ -1,0 +1,665 @@
+/* ============================================================
+   LAYOUT — fills viewport height, nothing overflows below
+   ============================================================ */
+
+/* FIX: page must be a flex column so splitLayout can flex-grow */
+:global(.page) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.splitLayout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 24px;
+    /* FIX: grow to fill remaining space after header, never exceed it */
+    flex: 1;
+    min-height: 0;
+    /* critical for flex children to shrink */
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+/* ============================================================
+   LEFT PANEL
+   ============================================================ */
+.leftPanel {
+    min-width: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* FIX: let it scroll internally, never push the grid */
+    scrollbar-width: thin;
+    scrollbar-color: #c8c0b4 #f0ece0;
+}
+
+.leftPanel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.leftPanel::-webkit-scrollbar-track {
+    background: #f0ece0;
+    border-radius: 4px;
+}
+
+.leftPanel::-webkit-scrollbar-thumb {
+    background: #c8c0b4;
+    border-radius: 4px;
+}
+
+/* ============================================================
+   RIGHT PANEL
+   ============================================================ */
+.rightPanel {
+    background: #fffdf7;
+    border: 2px solid #e8e0d0;
+    border-radius: 6px;
+    /* FIX: flex column so header + scrollable content both fit */
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.previewHeader {
+    flex-shrink: 0;
+    /* never squish the header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: #faf8f0;
+    border-bottom: 2px solid #e8e0d0;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.previewTabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.previewTab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    color: #888780;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.previewTab:hover {
+    background: #f0ece0;
+    color: #2c2c2a;
+}
+
+.previewTab.active {
+    background: #e8f4ee;
+    color: #0f6e56;
+}
+
+.previewTab:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pageControls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.pageControls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: #f0ece0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: #2c2c2a;
+}
+
+.pageControls button:hover:not(:disabled) {
+    background: #e8e0d0;
+}
+
+.pageControls button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.pageInfo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    color: #2c2c2a;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   PREVIEW CONTENT — scrolls internally
+   ============================================================ */
+.previewContent {
+    flex: 1;
+    /* takes remaining height in rightPanel */
+    min-height: 0;
+    /* allows shrinking below intrinsic size */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: #c8c0b4 #f0ece0;
+}
+
+.previewContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.previewContent::-webkit-scrollbar-track {
+    background: #f0ece0;
+    border-radius: 4px;
+}
+
+.previewContent::-webkit-scrollbar-thumb {
+    background: #c8c0b4;
+    border-radius: 4px;
+}
+
+.previewContent::-webkit-scrollbar-thumb:hover {
+    background: #a8a094;
+}
+
+/* ============================================================
+   PDF SINGLE-PAGE PREVIEW
+   ============================================================ */
+.singlePagePreview {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 200px;
+    background: #f0ece0;
+    border-radius: 4px;
+    padding: 16px;
+    /* FIX: let the Page component define height naturally */
+    overflow: hidden;
+}
+
+/* react-pdf canvas/page wrapper — contain width */
+.singlePagePreview :global(.react-pdf__Page) {
+    max-width: 100%;
+}
+
+.singlePagePreview :global(.react-pdf__Page__canvas) {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 2px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.pdfPage {
+    display: flex;
+    justify-content: center;
+}
+
+/* ============================================================
+   EMPTY / LOADING STATES
+   ============================================================ */
+.emptyPreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 60px 40px;
+    color: #c8c0b4;
+    text-align: center;
+    min-height: 200px;
+}
+
+.emptyPreview p {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    color: #888780;
+    font-style: italic;
+    margin: 0;
+}
+
+.loadingPreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 60px;
+    color: #888780;
+    min-height: 200px;
+}
+
+.loadingPreview p {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ============================================================
+   OUTPUT GRID (thumbnail cards)
+   ============================================================ */
+.pageGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 14px;
+}
+
+.pageCard {
+    background: white;
+    border: 2px solid #e8e0d0;
+    border-radius: 4px;
+    padding: 10px;
+    transition: all 0.15s ease;
+    position: relative;
+}
+
+.pageCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 #e8e0d0;
+    border-color: #0f6e56;
+}
+
+.outputCard {
+    background: #e8f4ee;
+    border-color: #0f6e56;
+}
+
+.pageNumber {
+    position: absolute;
+    top: -10px;
+    left: 8px;
+    background: #faf6ef;
+    padding: 2px 8px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #0f6e56;
+    border: 1px solid #e8e0d0;
+    border-radius: 12px;
+}
+
+.miniPreview {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #faf6ef;
+    border-radius: 2px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.miniPreview :global(.react-pdf__Page__canvas) {
+    max-height: 130px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.pageLabel {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    color: #888780;
+    text-align: center;
+    margin-top: 6px;
+}
+
+.downloadBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    margin-top: 8px;
+    padding: 5px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #0f6e56;
+    background: white;
+    border: 1.5px solid #0f6e56;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.downloadBtn:hover {
+    background: #0f6e56;
+    color: white;
+}
+
+/* ============================================================
+   LEFT PANEL COMPONENTS
+   ============================================================ */
+.dropzone {
+    border: 3px dashed #c8c0b4;
+    border-radius: 8px;
+    background: #fffdf7;
+    padding: 60px 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropzone:hover {
+    border-color: #0f6e56;
+    background: #f0f6f2;
+}
+
+.dropzone.dragging {
+    border-color: #0f6e56;
+    background: #e8f4ee;
+    transform: scale(0.98);
+}
+
+.dropzoneContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.iconWrapper {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f4ee;
+    border-radius: 50%;
+    color: #0f6e56;
+}
+
+.dropzoneTitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c2c2a;
+    margin: 0;
+}
+
+.dropzoneText {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    color: #888780;
+    margin: 0;
+}
+
+.browseLink {
+    color: #0f6e56;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fileHint {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    color: #c8c0b4;
+    margin: 6px 0 0;
+}
+
+.fileCard {
+    background: #fffdf7;
+    border: 2px solid #e8e0d0;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 3px 3px 0 #e8e0d0;
+}
+
+.fileInfo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid #e8e0d0;
+    margin-bottom: 18px;
+}
+
+.fileIcon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f4ee;
+    border-radius: 6px;
+    color: #0f6e56;
+}
+
+.fileDetails {
+    flex: 1;
+    min-width: 0;
+}
+
+.fileName {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2c2c2a;
+    margin: 0 0 4px;
+    word-break: break-all;
+}
+
+.fileSize {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    color: #888780;
+    margin: 0;
+}
+
+.removeButton {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0ece0;
+    border: none;
+    border-radius: 4px;
+    font-size: 22px;
+    color: #888780;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.removeButton:hover {
+    background: #f0a0a0;
+    color: #633806;
+}
+
+.splitOptions {
+    margin-bottom: 20px;
+}
+
+.modeToggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.modeButton {
+    flex: 1;
+    padding: 9px 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #888780;
+    background: #f0ece0;
+    border: 2px solid #e8e0d0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.modeButton:hover {
+    background: #e8e0d0;
+    color: #2c2c2a;
+}
+
+.modeButton.active {
+    background: #0f6e56;
+    border-color: #0f6e56;
+    color: white;
+}
+
+.inputGroup {
+    margin-bottom: 16px;
+}
+
+.label {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c2c2a;
+    margin-bottom: 6px;
+}
+
+.hint {
+    font-weight: 400;
+    font-size: 11px;
+    color: #888780;
+    margin-left: 6px;
+}
+
+.input {
+    width: 100%;
+    padding: 9px 11px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    color: #2c2c2a;
+    background: white;
+    border: 2px solid #e8e0d0;
+    border-radius: 4px;
+    transition: border-color 0.15s ease;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #0f6e56;
+}
+
+.input::placeholder {
+    color: #c8c0b4;
+    font-style: italic;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.splitButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    background: #0f6e56;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.splitButton:hover:not(:disabled) {
+    background: #0a5a46;
+    transform: translateY(-1px);
+}
+
+.splitButton:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.splitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinning {
+    animation: spin 1s linear infinite;
+}
+
+/* ============================================================
+   RESPONSIVE — stack vertically on smaller screens
+   ============================================================ */
+@media (max-width: 991px) {
+    .splitLayout {
+        grid-template-columns: 1fr;
+        /* On mobile allow scrolling the whole page instead of fixed height */
+        flex: unset;
+        overflow: visible;
+        margin-top: 16px;
+    }
+
+    .rightPanel {
+        min-height: 420px;
+        max-height: 60vh;
+    }
+
+    .leftPanel {
+        overflow: visible;
+    }
+}
+
+@media (max-width: 575px) {
+    .previewHeader {
+        padding: 10px 12px;
+    }
+
+    .previewTab {
+        padding: 5px 9px;
+        font-size: 12px;
+    }
+
+    .pageGrid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 10px;
+    }
+
+    .miniPreview {
+        height: 100px;
+    }
+
+    .modeToggle {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

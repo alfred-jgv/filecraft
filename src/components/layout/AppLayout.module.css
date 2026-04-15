@@ -1,0 +1,483 @@
+.shell {
+    min-height: 100vh;
+    background: #faf6ef;
+    background-image: repeating-linear-gradient(transparent, transparent 31px,
+            #c5d5e5 31px, #c5d5e5 32px);
+    display: flex;
+    flex-direction: column;
+}
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fffdf7;
+    border-bottom: 2px solid #e8e0d0;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 0 200px;
+    height: 56px;
+    box-shadow: 0 1px 0 #f0ece0;
+}
+
+.brand {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+}
+
+.brandFile {
+    color: #2c2c2a;
+}
+
+.brandCraft {
+    color: #0f6e56;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.link {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    color: #888780;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.link:hover {
+    color: #2c2c2a;
+    background: #f0ece0;
+}
+
+.active {
+    color: #0f6e56;
+    background: #e8f4ee;
+    font-style: italic;
+}
+
+.main {
+    flex: 1;
+    padding: 40px 32px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.page {
+    animation: fadeUp 0.4s ease both;
+}
+
+.header {
+    margin-bottom: 36px;
+}
+
+.title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c2c2a;
+    letter-spacing: -0.5px;
+    margin: 0 0 6px;
+}
+
+.subtitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #888780;
+    margin: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 4px 6px 4px 6px;
+    padding: 24px 20px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 3px 3px 0 var(--accent);
+    position: relative;
+}
+
+.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--accent);
+}
+
+.card:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--accent);
+}
+
+.iconWrapper {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    color: var(--accent);
+}
+
+.cardBody {
+    flex: 1;
+}
+
+.cardTitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c2c2a;
+    margin: 0 0 4px;
+}
+
+.cardDesc {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    color: #888780;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.arrow {
+    flex-shrink: 0;
+    color: var(--accent);
+    opacity: 0.4;
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+.card:hover .arrow {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Large Desktop (1200px - 1600px) */
+@media (max-width: 1600px) {
+    .nav {
+        padding: 0 200px;
+    }
+}
+
+/* Desktop (992px - 1199px) */
+@media (max-width: 1199px) {
+    .nav {
+        padding: 0 60px;
+    }
+    
+    .main {
+        max-width: 960px;
+        padding: 32px 24px;
+    }
+    
+    .title {
+        font-size: 28px;
+    }
+    
+    .grid {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+/* Tablet (768px - 991px) */
+@media (max-width: 991px) {
+    .nav {
+        padding: 0 32px;
+        gap: 24px;
+    }
+    
+    .brand {
+        font-size: 20px;
+    }
+    
+    .links {
+        gap: 2px;
+    }
+    
+    .link {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    .link span {
+        display: none; /* Hide text, show only icons on tablet */
+    }
+    
+    .link svg {
+        margin: 0;
+    }
+    
+    .main {
+        max-width: 100%;
+        padding: 32px 24px;
+    }
+    
+    .title {
+        font-size: 26px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+    }
+    
+    .card {
+        padding: 20px 16px;
+        gap: 12px;
+    }
+    
+    .iconWrapper {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .cardTitle {
+        font-size: 15px;
+    }
+    
+    .cardDesc {
+        font-size: 12px;
+    }
+}
+
+/* Mobile Landscape (576px - 767px) */
+@media (max-width: 767px) {
+    .nav {
+        padding: 0 20px;
+        gap: 16px;
+        height: 50px;
+    }
+    
+    .brand {
+        font-size: 18px;
+    }
+    
+    .links {
+        gap: 0;
+    }
+    
+    .link {
+        padding: 6px 8px;
+    }
+    
+    .main {
+        padding: 24px 16px;
+    }
+    
+    .header {
+        margin-bottom: 24px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .subtitle {
+        font-size: 13px;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    
+    .card {
+        padding: 18px 16px;
+    }
+    
+    .iconWrapper {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .cardTitle {
+        font-size: 14px;
+    }
+    
+    .cardDesc {
+        font-size: 12px;
+    }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media (max-width: 575px) {
+    .nav {
+        padding: 0 16px;
+        gap: 12px;
+        height: 48px;
+    }
+    
+    .brand {
+        font-size: 16px;
+    }
+    
+    .links {
+        gap: 0;
+    }
+    
+    .link {
+        padding: 4px 6px;
+    }
+    
+    .link svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .main {
+        padding: 20px 12px;
+    }
+    
+    .header {
+        margin-bottom: 20px;
+    }
+    
+    .title {
+        font-size: 22px;
+        letter-spacing: -0.3px;
+    }
+    
+    .subtitle {
+        font-size: 12px;
+    }
+    
+    .grid {
+        gap: 12px;
+    }
+    
+    .card {
+        padding: 16px 14px;
+        gap: 10px;
+    }
+    
+    .iconWrapper {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .iconWrapper svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .cardBody {
+        min-width: 0; /* Prevents overflow on small screens */
+    }
+    
+    .cardTitle {
+        font-size: 13px;
+    }
+    
+    .cardDesc {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+    
+    .arrow {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Small Mobile (up to 375px) */
+@media (max-width: 375px) {
+    .nav {
+        padding: 0 12px;
+        gap: 8px;
+    }
+    
+    .brand {
+        font-size: 14px;
+    }
+    
+    .link {
+        padding: 4px 4px;
+    }
+    
+    .main {
+        padding: 16px 12px;
+    }
+    
+    .title {
+        font-size: 20px;
+    }
+    
+    .card {
+        padding: 14px 12px;
+    }
+    
+    .cardDesc {
+        display: none; /* Hide description on very small screens */
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .card {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .card:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0 var(--accent);
+    }
+    
+    .link {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Print styles */
+@media print {
+    .nav {
+        position: static;
+    }
+    
+    .card {
+        break-inside: avoid;
+    }
+}

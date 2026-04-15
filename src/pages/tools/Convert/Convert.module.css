@@ -1,0 +1,355 @@
+.convertLayout {
+    margin-top: 24px;
+}
+
+.conversionSelector {
+    margin-bottom: 24px;
+}
+
+.label {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c2c2a;
+    margin-bottom: 8px;
+}
+
+.dropdownWrapper {
+    position: relative;
+}
+
+.dropdownButton {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: white;
+    border: 2px solid #e8e0d0;
+    border-radius: 6px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    color: #2c2c2a;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.dropdownButton:hover {
+    border-color: #0f6e56;
+    background: #faf8f0;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background: white;
+    border: 2px solid #e8e0d0;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 10;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 16px;
+    background: white;
+    border: none;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    color: #2c2c2a;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.dropdownItem:hover {
+    background: #e8f4ee;
+    color: #0f6e56;
+}
+
+.dropzone {
+    border: 3px dashed #c8c0b4;
+    border-radius: 8px;
+    background: #fffdf7;
+    padding: 60px 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropzone:hover {
+    border-color: #0f6e56;
+    background: #f0f6f2;
+}
+
+.dropzone.dragging {
+    border-color: #0f6e56;
+    background: #e8f4ee;
+    transform: scale(0.98);
+}
+
+.dropzoneContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f4ee;
+    border-radius: 50%;
+    color: #0f6e56;
+}
+
+.dropzoneTitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c2c2a;
+    margin: 0;
+}
+
+.dropzoneText {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    color: #888780;
+    margin: 0;
+}
+
+.browseLink {
+    color: #0f6e56;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fileHint {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    color: #c8c0b4;
+    margin: 8px 0 0;
+}
+
+.fileList {
+    background: #fffdf7;
+    border: 2px solid #e8e0d0;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.fileListTitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c2c2a;
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8e0d0;
+}
+
+.fileItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: #faf8f0;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.fileItemInfo {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fileItemName {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    color: #2c2c2a;
+}
+
+.fileItemSize {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    color: #888780;
+}
+
+.removeFileBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #f0ece0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: #888780;
+}
+
+.removeFileBtn:hover {
+    background: #f0a0a0;
+    color: #633806;
+}
+
+.convertActions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.convertButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    background: #0f6e56;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.convertButton:hover:not(:disabled) {
+    background: #0a5a46;
+    transform: translateY(-1px);
+}
+
+.convertButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.results {
+    margin-top: 24px;
+}
+
+.resultsTitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c2c2a;
+    margin: 0 0 16px 0;
+}
+
+.resultsGrid {
+    display: grid;
+    gap: 12px;
+}
+
+.resultCard {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: #e8f4ee;
+    border: 2px solid #0f6e56;
+    border-radius: 6px;
+}
+
+.resultInfo {
+    flex: 1;
+}
+
+.resultName {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f6e56;
+}
+
+.resultSize {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    color: #888780;
+}
+
+.downloadBtn {
+    padding: 6px 16px;
+    background: white;
+    border: 2px solid #0f6e56;
+    border-radius: 4px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0f6e56;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.downloadBtn:hover {
+    background: #0f6e56;
+    color: white;
+}
+
+.downloadAllBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px;
+    background: #f0ece0;
+    border: none;
+    border-radius: 4px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c2c2a;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.downloadAllBtn:hover {
+    background: #e8e0d0;
+}
+
+.spinning {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .dropzone {
+        padding: 40px 20px;
+    }
+    
+    .fileItemInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .dropdownMenu {
+        max-height: 250px;
+    }
+}
