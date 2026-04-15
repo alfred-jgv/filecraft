@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# FileCraft - Document Processing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![FileCraft Banner](https://via.placeholder.com/1200x400/0f6e56/ffffff?text=FileCraft)
 
-Currently, two official plugins are available:
+FileCraft is a modern, elegant document processing web application that allows users to convert, merge, split, and transform PDF, Word, and image files with ease. Built with React, TypeScript, and a beautiful paper-inspired design system.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+### Core Tools
+- **PDF to Word** - Convert PDF documents into editable Word files
+- **Merge PDFs** - Combine multiple PDF files into a single document
+- **Split PDF** - Extract specific pages or split PDFs into separate files
+- **Format Conversion** - Transform between PDF, Word, JPG, PNG, and more
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### User Experience
+- 🎨 **Elegant Paper-themed UI** - Beautiful, professional design
+- 🖱️ **Drag & Drop Support** - Easy file upload with visual feedback
+- 📱 **Fully Responsive** - Works perfectly on all devices
+- ⚡ **Fast Processing** - Optimized for quick file operations
+- 🔒 **Secure & Private** - Files are encrypted and auto-deleted
 
-## Expanding the ESLint configuration
+### Technical Highlights
+- ⚛️ Built with React 18 and TypeScript
+- 🎯 Lazy loading for optimal performance
+- 📄 PDF rendering with react-pdf
+- 🎨 CSS Modules for scoped styling
+- 🚀 Vite for blazing fast builds
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Quick Start
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn package manager
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/filecraft.git
+cd filecraft
